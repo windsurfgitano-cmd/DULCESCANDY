@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --maroon: #7A2740;
+  --maroon-deep: #5E1D31;
+  --pink: #E5568A;
+  --pink-soft: #F08CB4;
+  --pink-bg: #FBE4EC;
+  --cream: #FDF6EE;
+  --coral: #E8524E;
+  --candy-teal: #2CB1B1;
+  --candy-purple: #8A5CD1;
+  --candy-yellow: #F5CD3A;
+  --ink: #2B1620;
+  --white: #FFFFFF;
+}
+
+@theme inline {
+  --color-maroon: var(--maroon);
+  --color-maroon-deep: var(--maroon-deep);
+  --color-pink: var(--pink);
+  --color-pink-soft: var(--pink-soft);
+  --color-pink-bg: var(--pink-bg);
+  --color-cream: var(--cream);
+  --color-coral: var(--coral);
+  --color-candy-teal: var(--candy-teal);
+  --color-candy-purple: var(--candy-purple);
+  --color-candy-yellow: var(--candy-yellow);
+  --color-ink: var(--ink);
+
+  --font-display: var(--font-baloo), system-ui, sans-serif;
+  --font-heading: var(--font-fredoka), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-script: var(--font-pacifico), cursive;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Confetti / candy gradient helpers */
+.bg-candy-radial {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(229, 86, 138, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 0% 10%, rgba(44, 177, 177, 0.14), transparent 55%),
+    var(--cream);
+}
+
+.text-gradient-candy {
+  background: linear-gradient(90deg, var(--coral), var(--pink), var(--candy-purple), var(--candy-teal));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Scrollbar for cart drawer */
+.drawer-scroll::-webkit-scrollbar { width: 6px; }
+.drawer-scroll::-webkit-scrollbar-thumb { background: var(--pink-soft); border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* A11y: foco visible consistente en toda interacción (WCAG 2.4.7) */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
