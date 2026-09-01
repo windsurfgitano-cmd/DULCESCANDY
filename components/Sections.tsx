@@ -1,9 +1,9 @@
-import { formatCLP, MIN_PEDIDO_CLP, WHATSAPP_NUMBER, EJECUTIVA } from "@/lib/catalog";
+import { WHATSAPP_NUMBER, EJECUTIVA } from "@/lib/catalog";
 import Reveal from "./Reveal";
 
 export function Mayorista() {
   const pasos = [
-    { n: "1", t: "Arma tu pedido", d: "Elige las cajas que necesitas. El mínimo es solo " + formatCLP(MIN_PEDIDO_CLP) + "." },
+    { n: "1", t: "Arma tu cotización", d: "Elige los productos y cantidades que necesita tu negocio." },
     { n: "2", t: "Cierra por WhatsApp", d: `Envías tu pedido directo a ${EJECUTIVA}, que confirma stock y despacho.` },
     { n: "3", t: "Recibe y vende", d: "Coordinamos el envío a tu comuna. Tú te enfocas en vender." },
   ];
@@ -69,7 +69,7 @@ export function Footer() {
         <div>
           <p className="font-heading text-lg font-700">Pedidos</p>
           <p className="mt-3 text-sm text-white/70">
-            Mínimo de pedido: {formatCLP(MIN_PEDIDO_CLP)} · IVA incluido.
+            Consulta precios, disponibilidad y condiciones de despacho directamente.
           </p>
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -83,7 +83,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/40">
-        © {new Date().getFullYear()} Dulces Candy · Catálogo mayorista demo · Precios referenciales editables
+        © {new Date().getFullYear()} Dulces Candy · Catálogo mayorista
       </div>
     </footer>
   );

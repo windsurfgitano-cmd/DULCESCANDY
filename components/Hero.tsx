@@ -4,10 +4,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
 const HERO_IMGS = [
-  { src: "/productos/esp-001.webp", alt: "Paleta espiral arcoíris" },
-  { src: "/productos/emo-001.webp", alt: "Paleta emoji lentes de sol" },
-  { src: "/productos/fig-001.webp", alt: "Paleta conejito rosa" },
-  { src: "/productos/fru-003.webp", alt: "Paleta mora silvestre" },
+  { src: "/productos/PA-EMO-010.webp", alt: "Paleta emoji" },
+  { src: "/productos/PA-MON-010.webp", alt: "Paleta moña multicolor" },
+  { src: "/productos/PA-SAN-010.webp", alt: "Paleta sandía" },
+  { src: "/productos/PA-COR-010.webp", alt: "Paleta corazón" },
 ];
 
 export default function Hero() {
@@ -41,7 +41,7 @@ export default function Hero() {
             className="mt-5 max-w-md text-lg text-ink/70"
           >
             Paletas y dulces al por mayor para tu almacén, quiosco o dulcería.
-            Precios de fábrica, mínimo de pedido bajo y cierre directo por WhatsApp.
+            Catálogo amplio, atención directa y cotización personalizada por WhatsApp.
           </motion.p>
 
           <motion.div
