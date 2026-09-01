@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "@/lib/cart";
-import { formatCLP, MIN_PEDIDO_CLP, EJECUTIVA } from "@/lib/catalog";
+import { EJECUTIVA } from "@/lib/catalog";
 import { buildWhatsappUrl, type OrderPayload } from "@/lib/order";
 import ProductPlaceholder from "./ProductPlaceholder";
 
@@ -29,7 +29,6 @@ export default function CartDrawer({
     window.open(buildWhatsappUrl(order), "_blank");
   }
 
-  const pct = Math.min(100, (cart.subtotal / MIN_PEDIDO_CLP) * 100);
 
   return (
     <AnimatePresence>
@@ -55,7 +54,7 @@ export default function CartDrawer({
                   Tu pedido
                 </h2>
                 <p className="text-xs text-ink/50">
-                  {cart.totalCajas} cajas · {cart.totalItems.toLocaleString("es-CL")} unidades
+                  {cart.totalCajas} bolsas · {cart.totalItems.toLocaleString("es-CL")} unidades
                 </p>
               </div>
               <button
@@ -74,7 +73,7 @@ export default function CartDrawer({
                 <div className="flex h-full flex-col items-center justify-center gap-3 text-center text-ink/50">
                   <span className="text-5xl">🍬</span>
                   <p>Tu pedido está vacío.</p>
-                  <p className="text-sm">Agrega cajas desde el catálogo.</p>
+                  <p className="text-sm">Agrega bolsas desde el catálogo.</p>
                 </div>
               ) : (
                 <ul className="space-y-4">
@@ -91,7 +90,7 @@ export default function CartDrawer({
                           {l.producto.nombre}
                         </p>
                         <p className="text-xs text-ink/50">
-                          {formatCLP(l.producto.precio_caja)}/caja
+                          Cotizar precio
                         </p>
                         <div className="mt-auto flex items-center justify-between pt-1">
                           <div className="flex items-center gap-2">
@@ -114,9 +113,7 @@ export default function CartDrawer({
                               +
                             </button>
                           </div>
-                          <span className="tabular text-sm font-700 text-coral">
-                            {formatCLP(l.subtotal)}
-                          </span>
+                          <span className="text-xs font-700 text-coral">Por confirmar</span>
                         </div>
                       </div>
                       <button
@@ -136,34 +133,16 @@ export default function CartDrawer({
 
             {cart.lines.length > 0 && (
               <footer className="border-t border-pink-bg bg-white px-6 py-5">
-                {!cart.cumpleMinimo && (
-                  <div className="mb-3">
-                    <div className="mb-1 flex justify-between text-xs text-ink/60">
-                      <span>Mínimo de pedido {formatCLP(MIN_PEDIDO_CLP)}</span>
-                      <span>Faltan {formatCLP(cart.faltaParaMinimo)}</span>
-                    </div>
-                    <div className="h-2 overflow-hidden rounded-full bg-pink-bg">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-pink to-coral transition-all"
-                        style={{ width: `${pct}%` }}
-                      />
-                    </div>
-                  </div>
-                )}
-
                 <div className="mb-4 flex items-center justify-between">
-                  <span className="font-heading text-lg text-maroon">Subtotal</span>
-                  <span className="tabular font-heading text-2xl font-700 text-maroon">
-                    {formatCLP(cart.subtotal)}
-                  </span>
+                  <span className="font-heading text-lg text-maroon">Cotización</span>
+                  <span className="text-sm font-700 text-coral">Precio por confirmar</span>
                 </div>
                 <p className="mb-3 text-center text-[11px] text-ink/40">
-                  IVA incluido · Precios mayoristas referenciales
+                  {EJECUTIVA} confirmará precio, stock y despacho por WhatsApp.
                 </p>
 
                 <button
                   onClick={checkout}
-                  disabled={!cart.cumpleMinimo}
                   className="flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-4 font-bold text-white transition-all hover:brightness-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">

@@ -1,7 +1,6 @@
 import {
   WHATSAPP_NUMBER,
   EJECUTIVA,
-  formatCLP,
   type Producto,
 } from "./catalog";
 
@@ -42,12 +41,12 @@ export function buildWhatsappMessage(order: OrderPayload): string {
     L.push(
       `• ${l.cajas}× ${l.producto.nombre} (${l.producto.presentacion})`
     );
-    L.push(`   ${formatCLP(l.producto.precio_caja)}/caja → ${formatCLP(l.subtotal)}`);
+    L.push(`   Cantidad: ${l.cajas} bolsa(s)`);
   });
   L.push("");
-  L.push(`📦 Total cajas: ${order.totalCajas}`);
+  L.push(`📦 Total bolsas: ${order.totalCajas}`);
   L.push(`🍬 Total unidades: ${order.totalItems.toLocaleString("es-CL")}`);
-  L.push(`💰 *Subtotal: ${formatCLP(order.subtotal)}* (IVA incl.)`);
+  L.push("💬 Solicito precio, disponibilidad y condiciones de despacho.");
   L.push("");
   L.push("Quedo atenta a confirmar stock y despacho. ¡Gracias! 🎉");
 
@@ -81,6 +80,7 @@ export const PAYMENT_ENABLED = false;
 export async function initCheckout(
   order: OrderPayload
 ): Promise<CheckoutResult> {
+  void order;
   if (!PAYMENT_ENABLED) {
     return {
       available: false,

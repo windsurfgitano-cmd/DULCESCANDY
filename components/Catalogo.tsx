@@ -26,7 +26,7 @@ export default function Catalogo() {
           Nuestro catálogo
         </h2>
         <p className="mt-2 text-ink/60">
-          Precios por caja · IVA incluido · Editables desde tu panel
+          Catálogo mayorista · Cotiza disponibilidad y precio por WhatsApp
         </p>
       </Reveal>
 

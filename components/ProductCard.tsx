@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import type { Producto } from "@/lib/catalog";
-import { formatCLP, GLOW_POR_CATEGORIA } from "@/lib/catalog";
+import { GLOW_POR_CATEGORIA } from "@/lib/catalog";
 import { useCart } from "@/lib/cart";
 import ProductPlaceholder from "./ProductPlaceholder";
 
@@ -81,15 +81,10 @@ export default function ProductCard({ producto }: { producto: Producto }) {
           <div className="flex items-end justify-between">
             <div>
               <p className="text-xs text-ink/50">{producto.presentacion}</p>
-              <p className="tabular font-heading text-2xl font-700 text-maroon">
-                {formatCLP(producto.precio_caja)}
+              <p className="font-heading text-xl font-700 text-maroon">
+                Precio por WhatsApp
               </p>
-              <p className="tabular text-xs text-ink/50">
-                ≈ {formatCLP(producto.precio_unidad_ref)}/unidad
-                {producto.min_cajas > 1 && (
-                  <span className="ml-1 text-coral">· mín. {producto.min_cajas} cajas</span>
-                )}
-              </p>
+              <p className="text-xs text-ink/50">Cotización según producto y cantidad</p>
             </div>
           </div>
 
@@ -101,7 +96,7 @@ export default function ProductCard({ producto }: { producto: Producto }) {
                 : "bg-gradient-to-r from-pink to-coral hover:brightness-105"
             }`}
           >
-            {justAdded ? "✓ Agregado" : "Agregar al pedido"}
+            {justAdded ? "✓ Agregado" : "Agregar a cotización"}
           </button>
         </div>
       </div>
